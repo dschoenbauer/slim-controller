@@ -1,5 +1,4 @@
 <?php
-
 namespace DSchoenbauer\Controller;
 
 use Slim\App;
@@ -16,7 +15,7 @@ abstract class AbstractController implements VisitorInterface
 
     private $app;
     private $data;
-    
+
     public function __construct(array $data = [])
     {
         $this->setData($data);
@@ -29,8 +28,7 @@ abstract class AbstractController implements VisitorInterface
 
     public function handleRoute(Request $request, Response $response)
     {
-        $this->render($request, $response);
-        return $response;
+        return $this->render($request, $response);
     }
 
     abstract public function getRoute();
