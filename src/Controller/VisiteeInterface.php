@@ -5,6 +5,7 @@
  *
  * @author David
  */
-interface VisiteeInterface {
+interface VisiteeInterface
+{
     public function accept(VisitorInterface $visitor);
 }

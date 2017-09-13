@@ -1,5 +1,4 @@
 <?php
-
 namespace DSchoenbauer\Controller;
 
 use Slim\App;
@@ -11,50 +10,58 @@ use Slim\Http\Response;
  *
  * @author David
  */
-abstract class AbstractController implements VisitorInterface {
+abstract class AbstractController implements VisitorInterface
+{
 
-    private $_app;
-    private $_data;
-    
-    public function __construct(array $data = []) {
+    private $app;
+    private $data;
+
+    public function __construct(array $data = [])
+    {
         $this->setData($data);
     }
 
-    public function visitApp(App $app) {
-        $this->setApp($app)->getApp()->map($this->getMethods(),$this->getRoute(), [$this, 'handleRoute']);
+    public function visitApp(App $app)
+    {
+        $this->setApp($app)->getApp()->map($this->getMethods(), $this->getRoute(), [$this, 'handleRoute']);
     }
 
-    public function handleRoute(Request $request, Response $response) {
-        $this->render($request, $response);
-        return $response;
+    public function handleRoute(Request $request, Response $response)
+    {
+        return $this->render($request, $response);
     }
 
-    abstract function getRoute();
+    abstract public function getRoute();
 
-    abstract function render(Request $request, Response $response);
+    abstract public function render(Request $request, Response $response);
 
     /**
      * @return App
      */
-    public function getApp() {
-        return $this->_app;
+    public function getApp()
+    {
+        return $this->app;
     }
 
-    public function setApp($app) {
-        $this->_app = $app;
+    public function setApp($app)
+    {
+        $this->app = $app;
         return $this;
     }
 
-    public function getMethods() {
+    public function getMethods()
+    {
         return ['GET'];
     }
 
-    public function getData() {
-        return $this->_data;
+    public function getData()
+    {
+        return $this->data;
     }
 
-    public function setData($data) {
-        $this->_data = $data;
+    public function setData($data)
+    {
+        $this->data = $data;
         return $this;
     }
 }
