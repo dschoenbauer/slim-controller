@@ -6,6 +6,7 @@ use Slim\App;
  *
  * @author David
  */
-interface VisitorInterface {
+interface VisitorInterface
+{
     public function visitApp(App $app);
 }
