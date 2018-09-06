@@ -1,7 +1,7 @@
 {
     "name": "dschoenbauer/slim-controller",
     "type": "project",
-    "license": "Private",
+    "license": "MIT",
     "authors": [
         {
             "name": "David Schoenbauer",
